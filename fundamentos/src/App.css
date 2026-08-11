@@ -93,6 +93,53 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
+.acciones-formulario {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.acciones-formulario button {
+  flex: 1;
+}
+
+.boton-confirmar {
+  background-color: #278747;
+}
+
+.boton-confirmar:hover {
+  background-color: #1d6d38;
+}
+
+.vista-previa h2 {
+  margin-bottom: 12px;
+}
+
+.seccion-resumen {
+  padding: 18px 0;
+  border-bottom: 1px solid #dedede;
+}
+
+.seccion-resumen h3 {
+  margin: 0 0 12px;
+  color: #7a006b;
+}
+
+.seccion-resumen p {
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+}
+
+.foto-perfil {
+  display: block;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 20px;
+  border: 3px solid #ad0096;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .footer {
   margin-top: 20px;
   margin-bottom: 32px;
@@ -123,5 +170,9 @@ button:focus-visible {
 
   .formulario {
     padding: 20px;
+  }
+
+  .acciones-formulario {
+    flex-direction: column;
   }
 }
