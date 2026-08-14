@@ -1,7 +1,9 @@
+/* Evita que padding y borde aumenten inesperadamente el ancho de los elementos. */
 * {
   box-sizing: border-box;
 }
 
+/* Fondo global y eliminacion del margen por defecto del navegador. */
 html {
   background: #f0f8ff;
 }
@@ -10,6 +12,7 @@ body {
   margin: 0;
 }
 
+/* Hace que el contenedor principal ocupe al menos toda la pantalla. */
 #root {
   min-height: 100vh;
   padding: 1px 0;

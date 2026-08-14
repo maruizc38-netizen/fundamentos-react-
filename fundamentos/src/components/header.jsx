@@ -1,3 +1,4 @@
+// Encabezado reutilizable que se muestra al inicio de la aplicacion.
 function Header() {
   return (
     <header className="titulo">

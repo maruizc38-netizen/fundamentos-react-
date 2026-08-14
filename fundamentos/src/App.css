@@ -1,3 +1,4 @@
+/* Estilos generales que se aplican a toda la pagina. */
 body {
   min-width: 320px;
   background-color: #f0f8ff;
@@ -5,6 +6,7 @@ body {
   color: #171717;
 }
 
+/* Contenedores principales: encabezado, formularios y pie de pagina. */
 .titulo,
 .formulario,
 .footer {
@@ -40,6 +42,7 @@ body {
   text-align: center;
 }
 
+/* Cada grupo contiene la etiqueta y el campo de un formulario. */
 .grupo {
   display: flex;
   flex-direction: column;
@@ -71,6 +74,7 @@ body {
   border-color: #ad0096;
 }
 
+/* Estilo base de todos los botones y sus estados de interaccion. */
 button {
   width: 100%;
   margin-top: 4px;
@@ -93,6 +97,7 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
+/* Botones para navegar entre los pasos del formulario. */
 .acciones-formulario {
   display: flex;
   gap: 12px;
@@ -111,6 +116,7 @@ button:focus-visible {
   background-color: #1d6d38;
 }
 
+/* Secciones que organizan la informacion del resumen final. */
 .vista-previa h2 {
   margin-bottom: 12px;
 }
@@ -130,6 +136,123 @@ button:focus-visible {
   overflow-wrap: anywhere;
 }
 
+/* Listas de cursos: formulario y vista previa. */
+.detalle-cursos {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.detalle-cursos ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 24px;
+}
+
+.detalle-cursos li {
+  color: #4a3b48;
+}
+
+.lista-cursos {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 18px;
+}
+
+.curso {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  background: #f9edf7;
+}
+
+.curso button {
+  width: auto;
+  margin: 0;
+  padding: 6px 10px;
+  background: #6e526a;
+  font-size: 0.875rem;
+}
+
+.curso button:hover {
+  background: #513d4e;
+}
+
+.lista-elementos {
+  display: grid;
+  gap: 6px;
+}
+
+.elemento {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #f4f1f4;
+}
+
+.elemento button {
+  width: auto;
+  margin: 0;
+  padding: 5px 9px;
+  background: #6e526a;
+  font-size: 0.8rem;
+}
+
+/* Tarjetas de experiencias laborales antes y despues de la vista previa. */
+.lista-experiencias {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.experiencia {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 6px;
+  background: #eef6ff;
+}
+
+.experiencia div,
+.experiencia span {
+  display: grid;
+  gap: 4px;
+}
+
+.experiencia span {
+  color: #4a5560;
+  font-size: 0.9rem;
+}
+
+.experiencia button {
+  width: auto;
+  margin: 0;
+  padding: 6px 10px;
+  background: #6e526a;
+  font-size: 0.875rem;
+}
+
+.experiencia-resumen + .experiencia-resumen {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e6dce4;
+}
+
+.experiencia-resumen h4 {
+  margin: 0 0 8px;
+  color: #4b1744;
+}
+
+/* Imagen circular seleccionada por la persona. */
 .foto-perfil {
   display: block;
   width: 130px;
@@ -140,6 +263,7 @@ button:focus-visible {
   object-fit: cover;
 }
 
+/* Pie de pagina. */
 .footer {
   margin-top: 20px;
   margin-bottom: 32px;
@@ -163,6 +287,7 @@ button:focus-visible {
   margin-top: 4px;
 }
 
+/* Ajustes para pantallas pequenas, como celulares. */
 @media (max-width: 480px) {
   .titulo {
     margin-top: 16px;

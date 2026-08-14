@@ -1,9 +1,12 @@
 function Formulario({ datos, guardarDatos, siguiente }) {
+  // Evita que el navegador recargue la pagina y avanza al siguiente paso.
   const continuar = (event) => {
     event.preventDefault();
     siguiente();
   };
 
+  // Actualiza el campo cuyo name coincide con una propiedad de datos.
+  // Si es un archivo, guarda el primer archivo seleccionado; si no, su texto.
   const actualizarCampo = (event) => {
     const { name, value, files } = event.target;
     guardarDatos({ [name]: files ? files[0] ?? null : value });
@@ -12,6 +15,7 @@ function Formulario({ datos, guardarDatos, siguiente }) {
   return (
     <div className="formulario">
       <h2>Registro de aprendices</h2>
+      {/* Los inputs controlados muestran siempre el valor guardado en App.jsx. */}
       <form onSubmit={continuar}>
         <div className="grupo">
           <label htmlFor="foto">Fotografía</label>

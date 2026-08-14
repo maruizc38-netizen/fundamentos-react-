@@ -1,3 +1,4 @@
+// Pie de pagina reutilizable con la informacion institucional.
 function Piepag(){
     return(
         <footer className="footer">

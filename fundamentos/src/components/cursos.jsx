@@ -1,3 +1,4 @@
+// Componente informativo independiente; muestra cursos y objetivo profesional.
 function Cursos(){
     return(
         <section>

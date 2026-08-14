@@ -7,6 +7,7 @@ import FormularioExperiencia from "./components/formularioexperiencia";
 import VistaPrevia from "./components/vistaprevia";
 import "./App.css";
 
+// Estado inicial compartido por todos los pasos del formulario.
 const datosIniciales = {
   foto: null,
   nombre: "",
@@ -21,21 +22,22 @@ const datosIniciales = {
   cursos: [],
   institucion: "",
   anio: "",
-  empresa: "",
-  tipoExperiencia: "Laboral",
-  habilidades: "",
-  cargo: "",
-  funciones: "",
+  // Arreglo de objetos: permite guardar varias experiencias laborales.
+  experiencias: [],
 };
 
 function App() {
+  // Controla qué formulario se muestra: 1, 2, 3 o el resumen (4).
   const [paso, setPaso] = useState(1);
+  // Guarda toda la información de la persona en un solo estado compartido.
   const [persona, setPersona] = useState(datosIniciales);
 
+  // Une el dato nuevo con los datos anteriores sin perderlos.
   const actualizarDatos = (nuevosDatos) => {
     setPersona((datosActuales) => ({ ...datosActuales, ...nuevosDatos }));
   };
 
+  // Reinicia el formulario después de confirmar el registro.
   const finalizarRegistro = () => {
     setPersona(datosIniciales);
     setPaso(1);
@@ -44,6 +46,7 @@ function App() {
   return (
     <div className="contenedor">
       <Header />
+      {/* Se muestra un componente distinto según el paso actual. */}
       {paso === 1 && (
         <Formulario
           datos={persona}
