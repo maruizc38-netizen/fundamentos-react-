@@ -3,6 +3,15 @@ import { useEffect, useMemo } from "react";
 // Muestra un texto amigable cuando un campo no fue diligenciado.
 const valor = (dato) => dato || "No especificado";
 
+// Las experiencias antiguas pueden traer arreglos y el textarea guarda texto.
+// Esta funcion acepta ambos formatos y separa el texto por lineas.
+const comoLista = (dato) => {
+  if (Array.isArray(dato)) return dato;
+  if (typeof dato !== "string") return [];
+
+  return dato.split("\n").map((item) => item.trim()).filter(Boolean);
+};
+
 function VistaPrevia({ persona, anterior, enviar }) {
   // Crea una URL temporal para poder mostrar el archivo de imagen seleccionado.
   const urlFoto = useMemo(
@@ -66,11 +75,11 @@ function VistaPrevia({ persona, anterior, enviar }) {
               <p><strong>Tiempo:</strong> {valor(experiencia.tiempo)}</p>
               <div className="detalle-cursos">
                 <strong>Funciones:</strong>
-                {experiencia.funciones.length > 0 ? <ul>{experiencia.funciones.map((funcion, i) => <li key={`${funcion}-${i}`}>{funcion}</li>)}</ul> : <span>No especificado</span>}
+                {comoLista(experiencia.funciones).length > 0 ? <ul>{comoLista(experiencia.funciones).map((funcion, i) => <li key={`${funcion}-${i}`}>{funcion}</li>)}</ul> : <span>No especificado</span>}
               </div>
               <div className="detalle-cursos">
                 <strong>Habilidades:</strong>
-                {experiencia.habilidades.length > 0 ? <ul>{experiencia.habilidades.map((habilidad, i) => <li key={`${habilidad}-${i}`}>{habilidad}</li>)}</ul> : <span>No especificado</span>}
+                {comoLista(experiencia.habilidades).length > 0 ? <ul>{comoLista(experiencia.habilidades).map((habilidad, i) => <li key={`${habilidad}-${i}`}>{habilidad}</li>)}</ul> : <span>No especificado</span>}
               </div>
             </article>
           ))

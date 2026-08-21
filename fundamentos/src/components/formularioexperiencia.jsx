@@ -1,51 +1,38 @@
 import { useState } from "react";
 
-// Modelo vacio de una experiencia; funciones y habilidades son arreglos.
+// Modelo vacio de una experiencia: cada elemento de experiencias tiene esta forma.
 const experienciaInicial = {
   empresa: "",
   cargo: "",
   tiempo: "",
-  funciones: [],
-  habilidades: [],
+  funciones: "",
+  habilidades: "",
 };
 
 function FormularioExperiencia({ datos, guardarDatos, anterior, siguiente }) {
-  // Guarda la experiencia que se esta creando antes de llevarla a App.jsx.
+  // Estado temporal para llenar una experiencia antes de agregarla a App.jsx.
   const [experiencia, setExperiencia] = useState(experienciaInicial);
-  // Guarda el texto temporal de una nueva funcion o habilidad.
-  const [nuevaFuncion, setNuevaFuncion] = useState("");
-  const [nuevaHabilidad, setNuevaHabilidad] = useState("");
 
+  // Copia el objeto temporal y modifica solo el campo escrito.
   const actualizarCampo = (event) => {
     setExperiencia((actual) => ({ ...actual, [event.target.name]: event.target.value }));
   };
 
-  // Agrega un texto al arreglo indicado dentro de la experiencia temporal.
-  const agregarElemento = (campo, texto, limpiarTexto) => {
-    const elemento = texto.trim();
-    if (!elemento) return;
-
-    setExperiencia((actual) => ({ ...actual, [campo]: [...actual[campo], elemento] }));
-    limpiarTexto("");
-  };
-
-  // filter crea una copia sin el elemento que tiene ese indice.
-  const eliminarElemento = (campo, indice) => {
-    setExperiencia((actual) => ({
-      ...actual,
-      [campo]: actual[campo].filter((_, i) => i !== indice),
-    }));
-  };
-
+  // Agrega una copia de la experiencia al arreglo compartido de experiencias.
   const agregarExperiencia = () => {
     if (!experiencia.empresa.trim() || !experiencia.cargo.trim()) return;
 
-    guardarDatos({ experiencias: [...datos.experiencias, { ...experiencia }] });
+    guardarDatos({
+      experiencias: [...datos.experiencias, { ...experiencia }],
+    });
     setExperiencia(experienciaInicial);
   };
 
+  // filter devuelve todas las experiencias excepto la que se quiere eliminar.
   const eliminarExperiencia = (indice) => {
-    guardarDatos({ experiencias: datos.experiencias.filter((_, i) => i !== indice) });
+    guardarDatos({
+      experiencias: datos.experiencias.filter((_, i) => i !== indice),
+    });
   };
 
   return (
@@ -62,37 +49,16 @@ function FormularioExperiencia({ datos, guardarDatos, anterior, siguiente }) {
         </div>
         <div className="grupo">
           <label htmlFor="tiempo">Tiempo trabajado</label>
-          <input id="tiempo" name="tiempo" type="text" placeholder="Ejemplo: 1 ano" value={experiencia.tiempo} onChange={actualizarCampo} />
+          <input id="tiempo" name="tiempo" type="text" placeholder="Ejemplo: 1 año" value={experiencia.tiempo} onChange={actualizarCampo} />
         </div>
-
         <div className="grupo">
           <label htmlFor="funciones">Funciones desempenadas</label>
-          <input id="funciones" type="text" placeholder="Agregar funcion" value={nuevaFuncion} onChange={(event) => setNuevaFuncion(event.target.value)} />
-          <button type="button" onClick={() => agregarElemento("funciones", nuevaFuncion, setNuevaFuncion)}>Agregar funcion</button>
-          <div className="lista-elementos">
-            {experiencia.funciones.map((funcion, indice) => (
-              <div className="elemento" key={`${funcion}-${indice}`}>
-                <span>{funcion}</span>
-                <button type="button" onClick={() => eliminarElemento("funciones", indice)}>Eliminar</button>
-              </div>
-            ))}
-          </div>
+          <textarea id="funciones" name="funciones" rows="3" value={experiencia.funciones} onChange={actualizarCampo} />
         </div>
-
         <div className="grupo">
           <label htmlFor="habilidades">Habilidades tecnicas</label>
-          <input id="habilidades" type="text" placeholder="Agregar habilidad" value={nuevaHabilidad} onChange={(event) => setNuevaHabilidad(event.target.value)} />
-          <button type="button" onClick={() => agregarElemento("habilidades", nuevaHabilidad, setNuevaHabilidad)}>Agregar habilidad</button>
-          <div className="lista-elementos">
-            {experiencia.habilidades.map((habilidad, indice) => (
-              <div className="elemento" key={`${habilidad}-${indice}`}>
-                <span>{habilidad}</span>
-                <button type="button" onClick={() => eliminarElemento("habilidades", indice)}>Eliminar</button>
-              </div>
-            ))}
-          </div>
+          <textarea id="habilidades" name="habilidades" rows="3" value={experiencia.habilidades} onChange={actualizarCampo} />
         </div>
-
         <button type="button" onClick={agregarExperiencia}>Agregar experiencia</button>
 
         {/* map recorre el arreglo y crea una tarjeta por cada experiencia. */}
@@ -118,3 +84,13 @@ function FormularioExperiencia({ datos, guardarDatos, anterior, siguiente }) {
 }
 
 export default FormularioExperiencia;
+
+
+
+
+
+
+
+
+
+
